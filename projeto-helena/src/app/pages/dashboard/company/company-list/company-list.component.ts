@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CompanyService} from "../../../../services/company.service";
 import {Router} from "@angular/router";
+import {MatPaginator} from "@angular/material/paginator";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-company-list',
@@ -10,17 +12,22 @@ import {Router} from "@angular/router";
 export class CompanyListComponent implements OnInit {
 
   table = tableCompany
-  dataSource: any;
+  dataSource: MatTableDataSource<any>;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   constructor(
     public companyService: CompanyService,
     public router: Router
   ) {
-    this.companyService.get().subscribe( result => {
-      this.dataSource = result;
-    }, error => console.log(error))
+   this.loadList();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  loadList() {
+    this.companyService.get().subscribe( result => {
+      this.dataSource = new MatTableDataSource(result);
+      this.dataSource.paginator = this.paginator;
+    }, error => console.log(error))
   }
 
   edit(idCompany: number): void {
@@ -28,7 +35,9 @@ export class CompanyListComponent implements OnInit {
   }
 
   delete(idCompany: number): void {
-    this.companyService.delete(idCompany).subscribe( result => console.log(result), error => console.log(error));
+    this.companyService.delete(idCompany).subscribe( result => {
+      this.loadList();
+    }, error => console.log(error));
   }
 
 }

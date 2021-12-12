@@ -7,6 +7,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatPaginatorModule} from "@angular/material/paginator";
 @NgModule({
   declarations: [],
   imports: [
@@ -17,7 +18,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatIconModule,
     MatTableModule,
     MatInputModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatPaginatorModule
   ],
   exports: [
     MatSidenavModule,
@@ -26,7 +28,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatIconModule,
     MatTableModule,
     MatInputModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule { }

@@ -1,7 +1,7 @@
 <section class="container">
   <br>
   <div class="w-100">
-    <h2>Empresa <button class="btn btn-info float-end" routerLink="create">Criar</button></h2>
+    <h2>Empresa <button class="btn btn-primary float-end" routerLink="create"><i class="ti-plus"></i> Criar empresa</button></h2>
   </div>
   <div class="row">
     <div class="col-sm-12">
@@ -19,8 +19,8 @@
                   <button *ngIf="!element[column.value]" class="btn btn-sm btn-danger">Inativo</button>
                 </div>
                 <div *ngIf="column.value === 'action'">
-                  <button class="btn btn-sm btn-warning" (click)="edit(element.id)">Editar</button> 
-                  <button class="btn btn-sm btn-danger" (click)="delete(element.id)">Excluir</button>
+                  <button class="btn btn-sm btn-warning" (click)="edit(element.id)"><i class="ti-pencil"></i> Editar</button> 
+                  <button class="btn btn-sm btn-danger" (click)="delete(element.id)"><i class="ti-power-off"></i> Desativar</button>
                 </div>
 
                 <div *ngIf="column.value !== 'avatarUrl' && column.value !== 'active' && column.value !== 'action'">
@@ -32,6 +32,7 @@
             <tr mat-header-row *matHeaderRowDef="table.tableColumnsGenerate"></tr>
             <tr mat-row *matRowDef="let row; columns: table.tableColumnsGenerate;"></tr>
           </table>
+          <mat-paginator [pageSizeOptions]="[5, 8, 10]" showFirstLastButtons></mat-paginator>
         </div>
       </div>
     </div>

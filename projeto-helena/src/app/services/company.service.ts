@@ -13,8 +13,8 @@ export class CompanyService {
   module = 'company/'
   constructor(protected http: HttpClient) { }
 
-  get(): Observable<Company> {
-    return this.http.get<Company>(this.getUrl + this.module);
+  get(): Observable<any> {
+    return this.http.get<any>(this.getUrl + this.module);
   }
 
   getById(id: number): Observable<Company> {
