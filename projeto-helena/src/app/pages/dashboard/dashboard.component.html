@@ -1,6 +1,6 @@
 <app-sidenav></app-sidenav>
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side" opened="true">
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened="false">
     <mat-nav-list>
       <a mat-list-item *ngFor="let m of menu" [routerLink]="m.route">{{m.name}}</a>
     </mat-nav-list>
