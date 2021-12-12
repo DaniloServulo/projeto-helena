@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CompanyService} from "../../../../services/company.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Company} from "../../../../models/company.model";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-company-form',
@@ -15,6 +16,7 @@ export class CompanyFormComponent implements OnInit {
     private route: ActivatedRoute,
     public companyService: CompanyService,
     private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.form = new FormGroup({
       id: new FormControl(null),
@@ -43,9 +45,17 @@ export class CompanyFormComponent implements OnInit {
     if(this.form.valid){
       if(this.form.value.id !== null){
         this.companyService.update(this.form.value);
+        this.snackBar.open('Empresa editada com sucesso!!', 'Fechar', {
+          panelClass: ['green'],
+          duration: 4000
+        });
         this.router.navigate(['/dashboard/company'])
       } else {
         this.companyService.create(this.form.value).subscribe( result => {
+          this.snackBar.open('Empresa criada com sucesso!!', 'Fechar', {
+            panelClass: ['green'],
+            duration: 4000
+          });
           this.router.navigate(['/dashboard/company'])
         }, error => {
           console.log(error);

@@ -3,6 +3,7 @@ import {CompanyService} from "../../../../services/company.service";
 import {Router} from "@angular/router";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-company-list',
@@ -16,7 +17,8 @@ export class CompanyListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   constructor(
     public companyService: CompanyService,
-    public router: Router
+    public router: Router,
+    private snackBar: MatSnackBar
   ) {
    this.loadList();
   }
@@ -36,8 +38,15 @@ export class CompanyListComponent implements OnInit {
 
   delete(idCompany: number): void {
     this.companyService.delete(idCompany).subscribe( result => {
+      this.snackBar.open('Empresa desativada com sucesso!!', 'Fechar', {
+        panelClass: ['green'],
+        duration: 4000
+      });
       this.loadList();
-    }, error => console.log(error));
+    }, error => this.snackBar.open('Empresa desativada!', 'Fechar', {
+      panelClass: ['red'],
+      duration: 4000
+    }));
   }
 
 }
