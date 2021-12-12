@@ -17,7 +17,6 @@ export class CompanyListComponent implements OnInit {
   ) {
     this.companyService.get().subscribe( result => {
       this.dataSource = result;
-      console.log(result);
     }, error => console.log(error))
   }
 
