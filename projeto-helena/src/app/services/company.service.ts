@@ -24,4 +24,13 @@ export class CompanyService {
   delete(id: number): Observable<Company> {
     return this.http.delete<Company>(this.getUrl + this.module + id);
   }
+
+  update(model: Company) {
+    return this.http.put<Company>(this.getUrl + this.module + model.id, model).pipe(map(x => new Company(x)));
+  }
+
+  create(model: Company) {
+    delete model.id;
+    return this.http.post<Company>(this.getUrl + this.module, model).pipe(map(x => new Company(x)));
+  }
 }

@@ -5,6 +5,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 @NgModule({
   declarations: [],
   imports: [
@@ -13,14 +15,18 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule,
+    MatSlideToggleModule
   ],
   exports: [
     MatSidenavModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule,
+    MatSlideToggleModule
   ]
 })
 export class MaterialModule { }

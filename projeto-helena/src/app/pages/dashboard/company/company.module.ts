@@ -5,6 +5,7 @@ import { CompanyRoutingModule } from './company-routing.module';
 import { CompanyListComponent } from './company-list/company-list.component';
 import { CompanyFormComponent } from './company-form/company-form.component';
 import {MaterialModule} from "../../../shared/material/material.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {MaterialModule} from "../../../shared/material/material.module";
   imports: [
     CommonModule,
     CompanyRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
   ]
 })
 export class CompanyModule { }

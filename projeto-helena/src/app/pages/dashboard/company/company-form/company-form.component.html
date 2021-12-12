@@ -1,1 +1,39 @@
-<p>company-form works!</p>
+<section style="margin: 1rem">
+  <h2>Departamentos</h2>
+  <div class="card" style="padding: 1rem" >
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-sm-4">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Razão Social</mat-label>
+            <input matInput type="text" formControlName="razaoSocial">
+            <mat-error *ngIf="form.controls.razaoSocial.invalid">Campo obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Nome Fantasia</mat-label>
+            <input matInput type="text" formControlName="nomeFantasia">
+            <mat-error *ngIf="form.controls.nomeFantasia.invalid">Campo obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Total de Funcionários</mat-label>
+            <input matInput type="number" formControlName="qtdeFuncionarios">
+            <mat-error *ngIf="form.controls.qtdeFuncionarios.invalid">Campo obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12">
+          <mat-slide-toggle formControlName="active">Empresa Ativa?</mat-slide-toggle>
+        </div>
+        <div class="col-sm-12">
+          <div class="float-end">
+            <button mat-flat-button type="button" routerLink="/dashboard/departaments">Voltar</button>
+            <button mat-flat-button type="submit" color="primary">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
